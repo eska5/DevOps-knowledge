@@ -360,3 +360,86 @@ AWS App Runner - deploy containers without prior knowledge
 - Fargate reduces the amount you have manage for container orchestration
 - EC2 provides maximum control for configuration of scaling with containers
 
+#    Content and Network Delivery Services
+- Amazon Route 53
+- Amazon VPC
+- AWS Direct Connect
+- Amazon API Gateway
+- Amazon CloudFront
+- Elastic Load Balancing
+
+## Amazon VPC and Direct Connect
+VPC - Virtual Private Cloud - isolated section of the AWS Cloud for AWS Resources
+
+### Amazon VPC
+- Enables virtual network in AWS
+- Supports IPv4 and IPv6
+- Allows for configuration of
+    - IP address range
+    - Subnets
+    - Route tables
+    - Network gateways
+- Supports public & private subnets
+- Can utilize NAT for private subnets
+- Enables a connection to your data center
+- Can connect to other VPC's
+- Supports private connections to many AWS services
+
+### AWS Direct Connect 
+Establish a dedicated network connection from your data center to AWS
+
+## Amazon Route 53
+- Domain name service (DNS)
+- Global AWS service
+- Highly available
+- Enables global resource routing
+
+## Elastic Load Balancing
+- Distribute traffic across multiple targets
+- Integrates with EC2, ECS, and Lambda
+- Supports one or more AZ's in a region
+- Three types of load balancers:
+    - Application Load Balancer (ALB)
+    - Network Load Balancer (NLB)
+    - Classic Load Balancer (ELB)
+
+###    Scaling
+- Vertical Scaling - scaling up (adding resources and moving to a larger instances)
+- Horizontal Scaling - scaling out (adding additional instances)
+
+## Amazon CloudFront and API Gateway
+
+###    Amazon CloudFront
+- Content delivery network (CDN)
+- Enables users to get content from server closest to them
+- Supports static and dynamic content
+- Utilizes AWS edge locations
+- Includes Advanced security features:
+    - AWS Shield for DDoS
+    - AWS WAF
+
+###    Amazon API Gateway
+- Fully managed API management services
+- Directly integrates with multiple AWS servives
+- Provides monitoring & metrics on API calls
+- Supports VPC and on-premise private applications
+
+## AWS Global Accelerator
+- Utilizes IP addresses that route to edge locations
+- Once request reaches edge locations, traffic is routed through AWS network
+- Can route requests to many AWS resoureces:
+    - Network Load Balancer (NLB)
+    - Application Load Balancer (ALB)
+    - EC2 Intances
+    - Elastic IP address
+
+###    Performance improvements
+- Distance between user and initial endpoint is minimized by using edge locations
+- Traffic is optimized by using AWS network instead of public internet
+- Results in improvements of first byte latency, jitter, and throughput
+- Provides superior fault tolerance by not relying on DNS resolution
+
+### Use cases
+- non HTTP Protocol (UDP, MQTT, VOIP)
+- Requires Static IP
+- Instant Failover
