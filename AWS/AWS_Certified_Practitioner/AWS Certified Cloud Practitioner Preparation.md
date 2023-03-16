@@ -180,6 +180,183 @@ AWS Enterprise Support
 
 ![](https://i.imgur.com/lLE2EWg.png)
 
+
+
+---
+---
+---
+
+
+
 #    Understanding AWS Core Services
 
 ###    Interacting with AWS
+
+- AWS Console
+A web application for interacting with services
+- AWS CLI
+Command line tool. Can do same things that can be done in AWS Console
+- AWS SDK
+Used in programming language for example go. Enables automation.
+
+console is great for testing
+repeated tasks should be automated with CLI or SDK
+custom application should use SDK
+
+####    AWS Console
+
+Difference between signing as Root user and IAM user
+root user is main user (admin account) for stuff like deleting account
+
+`Route53 does not need to select region`
+
+####    AWS CLI
+account name -> security credential
+
+authentication:
+- MFA
+- Access keys (best for IAM users)
+
+Available for:
+- Windows
+- Linux
+- Mac
+
+AWS CloudShell is an online option.
+
+##    Compute Services
+
+###   AMAZON EC2 
+
+When can we use it?
+- Web application hosting
+- Batch processing
+- Web services endpoint
+- Desktop in the cloud
+
+Concepts
+- Instance Types
+- Root Device Types
+- Amazon Machine Image (AMI)
+- Purchase Options
+
+#####    EC2 Instance Types
+- Defines the processor, memory, and storage type
+- Cannot be changed without downtime
+- Provided in the following categories
+    - general purpose
+    - Compute, memory, and storage optimized
+    - Accelerated computing
+- Pricing is based on instance type
+- Some instance types have unique capabilites
+
+![](https://i.imgur.com/jcovUS4.png)
+
+#####    Root Device Types
+- Instance Store
+    - [Physically attached to the host] 
+    - ephemeral
+- Elastic Block Store (EBS) 
+    - [Persistance storage that exists separate from the host]
+    - persistent
+
+#####    Amazon Machine Image (AMI)
+- Template for an EC2 instance including configuration, operating system, data
+- AWS provides many AMI's that can be leveraged
+- AMI's can be shared across AWS accounts
+- Custom AMI's can be created based on your configuration
+- Commercial AMI's
+
+###    EC2 Purchase Types
+- On-Demand
+- Reserved
+    - Provides discounts over the on-demand model for a declaration to be using it for a period of time
+        - Standard (Highest Discount)
+        - Convertible (Convert attributes)
+        - Scheduled (time window)
+    -    Reserved Instance Cost Models
+            - All Upfront (Maximum Savings)
+            - Partial Upfront
+            - No Upfront (Minimum Upfront Const)  
+- Savings Plan
+    - Similar in ceoncept to reserved instances
+    - Supports compute with EC2, Fargate, and Lambda
+    - Unlike Reserved Instances, it does not reserve capacity
+    - Provide savings of up to 72%
+    - Comes in 1 or 3 year terms
+- Spot
+    - Can provide up to 90% discount on-demand pricing
+    - There is a market price for instance types per availability zone called the Spot price
+    - When you request instances, if your bid is higher than Spot price they will launch
+    - If the Spot price grows to exceed your bid, the instances will be terminated
+    - Spot instances can be notified 2 minutes prior to termination
+- Dedicated (If you have to for example hold government data within the country territory)
+
+1. Consistent and always needed Instance - `Standard` or `Convertible Reserved`
+2. Batch processing when process can start and stop - `Spot Instances`
+3. Inconsistent need - `On-Demand`
+4. Compliance requiremend - `Dedicated host`
+
+## Standard
+![](https://i.imgur.com/sIjYMOj.png)
+
+##    SPOT
+![](https://i.imgur.com/JSJKdmw.png)
+
+##    AWS Elastic Beanstalk
+####    Why
+- Automates the process of deploying and scaling workloads on EC2 (PaaS)
+- Supports a specific set of technologies
+- Leverages existing AWS services
+- Only pay for the other services you leverage
+- Handles provisioning, load balancing, scaling, and monitoring
+
+####    Features
+- Monitoring
+- Deployment
+- Scaling
+- EC2 Customization
+
+#### Use cases
+- Deploy an application with minimal knowledge of other servies
+- Reduce the overall maintenance needed for the application
+- Few customizations are required
+
+
+##    AWS Lambda
+AWS Lambda lets you run code without provisioning or managing servers. Paying for the compute time you consume. Run Code for any type of application - with zero administration
+
+- Enables the running of code without provisioning infrastructure
+- Only charged for usage based on execution time
+- Can configure available memory from 128MB to 3008MB
+- Integrates with many AWS Services
+- Enables event-driven workflows
+- Primary service for serverless approach
+
+#####    Advantages
+- Reduced maintenance requirements
+- Enables fault tolerance without additional work
+- Scales based on demand
+- Pricing is based on usage
+
+##    Container Services
+
+AWS App Runner - deploy containers without prior knowledge
+
+#####    Container Orchestration SErvices
+
+- Amazon ECS - Full featured container orchestration service
+- Amazon EKS - Kubernetes based full-featured container orchestration service
+
+#####    Compute Engines
+
+- Amazon EC2
+- AWS Fargate - Serverless compute engine for use with the container orchestration service (scaling)
+
+#####    Selecting a Container Service
+- App Runner requires no prerequisite knowledge of containers or infrastructure
+- EKS will provide an easier starting point for Kubernetes in the cloud
+- ECS natively integrates with many AWS services
+- Fargate reduces the amount you have manage for container orchestration
+- EC2 provides maximum control for configuration of scaling with containers
+
