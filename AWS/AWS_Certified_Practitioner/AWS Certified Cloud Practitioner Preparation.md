@@ -443,3 +443,153 @@ Establish a dedicated network connection from your data center to AWS
 - non HTTP Protocol (UDP, MQTT, VOIP)
 - Requires Static IP
 - Instant Failover
+
+#    File Storage Services
+- Amazon S3
+- Amazon S3 Glaciar
+- Amazon Elastic Block Store (EBS)
+- Amazon Elastic File System (EFS)
+- AWS Snowball
+- AWS Snowmobile
+
+###    Amazon S3
+- Stores files a objects in buckets
+- Provides different storage classes for different use cases
+- stores data across multiple availability zones
+- Enables URL access for files
+- Offers configurable rules for data lifecycles 
+- Can serve as a static website host
+
+####    Non-archival Storage Classes
+- S3 Standard
+- S3 Intelligent Tiering
+    - Automatically moves files based on access
+    - Moves between frequent and infrequent access
+    - Same performance as S3-Standard
+- S3 Standard-IA
+- S3 One Zone-IA
+
+####    S3 Lifecycle Policies
+- Objects in a bucket can transition or expire based on your criteria
+- Transitions can enable objects to move to another storage class based on time
+- Expiration can delete objects based on age
+- Policies can also factor in versions of a specific object in the bucket
+
+`S3 Transfer Acceleration`
+
+###    Amazon S3 Glacier
+- S3 Glacier Instant Retrieval
+- S3 Glacier Flexible Retrieval
+- S3 Glacier Deep Archive
+
+####    Retrieval Times
+- Instant Retrieval can be retrieved in milliseconds
+- Flexible Retrieval can have configurable retrieval times from minutes to hours
+- Deep Archive has a retrieval time withing 12 hours
+
+####    Use Cases
+- AWS recommends Instant Retrieval for medical images, news media
+- AWS recommends Flexible Retrieval for backup or disaster recovery
+- AWS recommends Deep Archive for long-term data storage to meet compliance requirements or cases where the lowest cost is critical
+
+###    Elastic Block Store (EBS)
+- Enables redundancy within an AZ
+- Allows users to take snapshots of its data
+- Offers Encryption of its volumes
+- Provides multiple volume types:
+    - General purpose SSD (standard)
+    - Provisioned IOPS SSD (high performance)
+    - Throughput optimized HDD (frequent data access)
+    - Cold HDD (less frequent access workload)
+
+###    Elastic File System (EFS)
+- Fully managed NFS file system
+- Designed for Linux workloads
+- Supports up to petabyte scale
+- Stores data across multiple AZ's
+- Provides two different storage classes:
+    - Standard
+    - Infrequent access
+- Provides configurable lifecycle data rules
+
+
+###    Data Transfer with AWS Snowball
+- AWS Snowball
+    - Supports petabyte scale transfer
+    - Physical device is delivered by AWS
+    - AWS receives device and loads your data into S3
+- AWS Snowmobile
+    - Supports exabyte scale
+    - Shipping container is delivered to your location
+    - AWS sets up a connection to your network 
+    - You load your data on the Snowmobile
+    - AWS will load data into S3 when the container is received at an AWS location
+
+
+# Database Services and Utilities
+- Amazon RDS
+- Amazon Aurora
+- Amazon DynamoDB
+- Amazon Redshift
+- Amazon Elasticache
+- AWS Database Migration Service
+
+###    Amazon Relational Database Service (RDS)
+- Fully managed service for relational database
+- Handles provisioning, patching, backup, and recovery of your database
+- Supports deployment across multiple availability zones (multi-AZ)
+- Some platforms support read replicas
+- launches into a VPC
+- Provides both general purpose SSD and provisioned IOPS SSD drive options
+
+####    Amazon RDS Platforms
+- MySQL
+- PostgreSQL
+- MariaDB
+- Oracle Database
+- SQL Server
+- Amazon Aurora
+
+`Amazon Database Migration Service (DMS)`
+
+###    Amazon DynamoDB
+- Fully managed NoSQL database service
+- Provides both key-value and document database
+- Enables extremely low latency at virtually any scale
+- Supports automated scaling based on configuration
+- Offers in-memory cache with the DynamoDB
+
+####    DynamoDB Use Cases
+- Scale without excessive maintenance
+- Serverless applications
+- Implementations where low latency is key
+- Data models without BLOB storage
+
+###    Amazon Elasticache & Redshift
+####    Amazon Elasticache
+- Fully managed in-memory data stores
+- Supports both Memcached and Redis
+- Provides low latency in response times
+- Enables scaling and replicas to meet application demand
+- Handles common use cases including:
+    - Database layer caching
+    - Session storage
+
+####    Amazon Redshift
+- Scalable data warehouse service
+- Supports petabyte scale warehousing of data
+- Leverages high performance disks and columnar storage
+- Offers the ability to fully encrypt contents
+- Provides isolation with a VPC
+- Enables querying of exabytes of data in Amazon S3 using Redshift Spectrum
+
+###    Additional Database Services
+- DocumentDB
+    - Organizations running some MongoDB workloads on AWS
+- Neptune
+    - mapping relationships between data points
+- MemoryDB for Redis
+    - a fast in-memory primary database
+- Timestream
+    - storing and retrieving time series data points
+
