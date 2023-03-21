@@ -593,3 +593,94 @@ Establish a dedicated network connection from your data center to AWS
 - Timestream
     - storing and retrieving time series data points
 
+#    AWS App Integration Services
+
+## Amazon SNS (Simple Notification Service)
+- Fully managed pub/sub messaging service
+- Enables you to create decoupled applications
+- Organized according to topics
+- Integrates with multiple AWS services
+- Provides end user notifications across SMS, email, and push notifications
+
+## Amazon SQS
+- Fully managed message queue service
+- Enables you to build decoupled and fault tolerant applications
+- Supports up to 256 KB data payload
+- Allows messages to be stored up to 14 days
+- Provides two types of queues
+    - Standard queue
+    - FIFO Queue
+
+## AWS Step Functions
+- Enables orchestration of workflows through a fully managed service
+- Supports serverless architectures
+- Can support complex workflows including error handling
+- Charged per state transition along with the other AWS services leveraged
+- Workflows are defined using Amazon States Language
+
+#    Management and Governance Services
+
+##    AWS CloudTrail
+- Inserts audit trail in an S3 bucket or into CloudWatch Logs
+- Logs events in the regions in which they occur
+- Meets many compliance requirements for infrastructure auditing
+- As a best practice, it should be enabled on every AWS account
+- Can be consolidated into an organizational trail using AWS Organizations
+
+###    Use Cases
+- Compliance requirement
+- Forensic Analysis
+- Operational Analysis
+- Troubleshooting
+
+##    Amazon CloudWatch
+- Monitoring and management service
+- Collects logs, metrics, and events from most AWS services
+- Enables alarms based on metrics
+- Provides visualization capabilites for metrics
+- Allows for custom dashboards based on collected metrics
+
+##    AWS Config
+- Provides configuration history for infrastructure
+- Works against rules that you can customize or even create custom validations
+- Includes conformance packs for compliance standards including PCI-DSS
+- Can work with AWS Organizations for both cross-region and cross-account setup
+- Provides remediation steps for infrastructure not meeting criteria
+
+##    AWS Systems Manager
+- Provides multiple tools that make it easier to manage your AWS infrastructure
+- Enables automation tasks for common maintenance actions
+- Gives a secure way to access servers using only AWS credentials
+- Stores commonly used parameters securely for operational use
+
+##    AWS CloudFormation
+- Managed service for provisioning infrastructure based on templates
+- No additional charge
+- Templates can be YAML or JSON
+- Enables infrastructure as code
+- Manages dependencies between resources
+- Provides drift detection to find changes in your infrastructure
+
+##    AWS OpsWorks
+- Configuration management service
+- Provides managed instances of Chef and Puppet
+- Configuration is defined as code for servers
+- Chet and Puppet manage the lifecycle of those configuration changes with services
+- Works in a hybris cloud architecture for both cloud-based on on-premise servers
+
+###    Subservices
+- AWS OpsWorks for Chef Automate
+- AWS OpsWorks for Puppet Enterprise
+- AWS OpsWorks Stacks
+
+##    AWS Organizations and Control tower
+###    AWS Organizations
+- Allows organizations to manage multiple accounts under a single master account
+- Provides organizations with the ability to leverage Consolidated Billing for all accounts
+- Enables organizations to centralize logging and security standards across accounts
+
+###    AWS Control Tower
+- Centralizes users across all AWS accounts
+- Provides a way to create new AWS accounts based on templates
+- Integrates Guardrails for accounts
+- Includes a dashboard to gain operational insights from a single view
