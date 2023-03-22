@@ -684,3 +684,71 @@ Establish a dedicated network connection from your data center to AWS
 - Provides a way to create new AWS accounts based on templates
 - Integrates Guardrails for accounts
 - Includes a dashboard to gain operational insights from a single view
+
+---
+---
+---
+
+#    Introduction to Security and Architecture on AWS
+
+##    AWS Architecture Core Concepts
+
+###    `Unacceptable Use Policy`
+- Sending unsolicited mass emails is prohibited
+- Hosting or distributing harmful content is prohibited
+- Penetration tests were not allowed but now they are for a specific services
+
+`Least Privilege Access`
+
+###    Shared Responsibility Model
+
+AWS Responsibility - `Security of the cloud`
+- Access and training for Amazon employees
+- Global data centers and underlying network
+- Hardware for global infrastructure
+- Configuration management for infrastructure
+- Patching cloud infrastructure and services
+
+Customer Responsibility - `Security in the cloud`
+- Individual access to cloud resources and training
+- Data security and encryption
+- Operating system, network, and firewall configuration
+- All code deployed onto cloud infrastructure
+- Patching guesting operating system and custom applications
+
+###    AWS Well-architected Framework
+- Operational Excellence
+- Security
+- Reliability
+- Performance Efficiency
+- Cost Optimization
+- Sustainability
+
+###    High-availability and Fault Tolerance
+`Everything fails all the time`
+
+Reliability on AWS:
+- Fault Tolerance
+- High Availability
+
+Building Solutions on AWS
+- Most managed AWS services provide high-availability out of the box
+- When building solutions directly on EC2 fault tolerance must be architected
+- Multiple availability zones should be leveraged
+- Some services can enable fault tolerance in your custom applications
+    - Simple Queue Service (SQS)
+    - Route 53
+
+###    Compliance
+
+####    Common compliance Sstandards
+- PCI-DSS: Compliance standard for processing credit cards
+- HIPAA: Compliance standard for healthcare data
+- SOC1,SOC2,SOC3: Third-party reviews of operational processes
+- FedRAMP: Standard for U.S. government data handling
+- ISO 27018: Standard for handling Personally Identifiable Info
+
+####    Acceptable Use Policy
+- AWS Config
+- AWS Artifact
+- Amazon GuardDuty
