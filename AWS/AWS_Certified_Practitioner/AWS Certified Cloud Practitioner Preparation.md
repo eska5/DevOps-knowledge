@@ -724,7 +724,7 @@ Customer Responsibility - `Security in the cloud`
 - Cost Optimization
 - Sustainability
 
-###    High-availability and Fault Tolerance
+###   High-availability and Fault Tolerance
 `Everything fails all the time`
 
 Reliability on AWS:
@@ -752,3 +752,248 @@ Building Solutions on AWS
 - AWS Config
 - AWS Artifact
 - Amazon GuardDuty
+
+##    AWS Identities and User Management
+`Least Privilege Access`
+
+###    AWS Identity and Access Management (IAM)
+- Service that controls access to AWS resources
+- Using the service is free
+- Manages both authentication and authorization
+- Supports identity federation through SAML providers including Active Directory
+
+###    AWS IAM Identities
+- Users
+- Groups
+- Roles
+
+###    Policies in AWS IAM
+- A JSON document that defines permissions for an AWS IAM identity (principal)
+- Defines Both the AWS services that the identity can access and what actions can be taken on that service
+- Can be either customer managed or managed by AWS
+
+###    AWS IAM Best Practices
+- Multi-Factor Authentication
+- Least Privilege Access
+
+###     Amazon Cognito
+- User directory service for custiom applications
+- Provides UI components for many platforms
+- Provides security capabilities to control account access
+- Enables controlled access to AWS resources
+- Can work with social and enterprise identity providers
+
+###    Amazon Cognito Identity Providers
+- Google
+- Amazon
+- Facebook
+- Microsoft active directory
+- SAML 2.0 Providers
+
+##    Data Architecture on AWS
+
+###    On-premise Data Integration Service
+- AWS Storage Gateway
+    - Integrates cloud storage into your local network
+    - Deployed as a VM or specific hardware appliance
+    - Integrates with S3 and EBS
+    - Supports three different gateway types
+        - Tape Gateway
+        - Volume Gateway
+        - File Gateway
+- AWS DataSync
+    - Leverages the DataSync agent deployed as a VM on your network
+    - Integrates with S3, Efs, and FSx for Windows File Server on AWS
+    - Greatly improved speed of transfer due to custom protocol and optimizations
+    - Charged per GB of data transferred
+
+###    Processing Data
+- AWS Glue (ETL Service)
+    - Fully managed ETL service on AWS
+    - Supports data in Amazon RDS, DynamoDB, Redshift, and S3
+    - Supports a serverless model of execution
+- AWS EMR (Big-data cloud processing)
+    - Enables big-data processing on Amazon EC2
+    - Supports popular open-source frameworks and tools
+    - Operates in a clustered environment without additional configuration
+    - Supports many different big-data use cases
+        - Apache Spark
+        - Apache Hive
+        - Apache HBase
+        - Apache Flink
+        - Apache Hudi
+        - Presto
+- AWS Data Pipeline (Data workflow orchestration)
+    - Managed ETL service on AWS
+    - Manages data workflow through AWS services
+    - Supports S3, EMR, Redshift, DynamoDB, and RDS
+    - Can integrate on-premise data stores
+
+###    Analyzing Data
+- Amazon Athena (query data stored in Amazon S3)
+    - Fully-managed serverless service
+    - Enables querying of large-scale data stored within Amazon S3
+    - Queries are written using standard SQL
+    - Charged based on data scanned for query
+- Amazon Quicksight (Business Intelligence[dashboards])
+    - Fully managed BI service
+    - Enables dynamic data dashboard based on data stored in AWS
+    - Charged on a per-user and per-session pricing
+    - Multiple versions provided based on needs
+- Amazon CloudSearch (Managed search for custom apps)
+    - Fully managed search service on AWS
+    - Supports scaling of search infrastructure to meet demand
+    - Charged per hour and instance type of search infrastructure
+    - Enables developers to integrate search into custom applications
+
+###   Integrating AI and Machine Learning
+- Amazon Rekognition (Computer vision)
+    - Fully managed image and video recognition deep learning service
+    - Identifies objects in images
+    - Identifies objects and actions in videos
+    - Can detect specific people using facial analysis
+    - Supports custom labels for your business objects
+- Amazon Translate (Translate text)
+    - Fully managed service for translation of text
+    - Currently supports 54 languages
+    - Can perform language identification
+    - Works both in batch and real-time
+- Amazon Transcribe (Speach to text)
+    - Fully-managed speech recognition services
+    - Recorded speech is converted into text in custom applications
+    - Includes a specific sub-service for medical use
+    - Supports Batch and real-time transcription
+    - Currently supports 31 languages
+
+##    Disaster Recovery on AWS
+
+###    Disaster Recovery Architectures
+####    Options
+- Backup and restore
+    - Production data is backed up into Amazon S3
+    - Data can be stored in either standard or archival storage classes
+    - EBS data can be stored as snapshots in Amazon S3 also
+    - In a Disaster Recovery event, a process is started to launch new environment
+    - This approach has the  longest recovery time
+    - Least cost
+- Pilot Light
+    - Key infrastructure components are kept running in the cloud
+    - Designed to reduce recovery time over the Backup and Restore approach
+    - Does incur cost of this infrastructure continually running in the cloud
+    - AMI's are prepared for additional systems and can be launched quickly
+- Warm Standby
+    - A scaled-down version of the full environment is running in the cloud
+    - Critical systems can be running on less capable instance types
+    - Instance types and other systems can be ramped up for disaster recovery event
+    - Does incur cost of this infrastructure continually running in the cloud
+- Multi site
+    - Full environment is running in the cloud at all times
+    - Utilizes instance types needed for production not just recovery
+    - Provides a near seamless recovery process
+    - Incurs the most cost over the other approaches
+
+###    Selecting a Disaster Recovery Architecture
+- Recovery Time Objective (RTO)
+- Recovery Point Objective (RPO)
+
+##    Architecting Applications on Amazon 
+
+###    Scaling EC2 Infrastructure
+- Vertical Scaling
+- Horizontal Scaling (Easier in the cloud)
+
+
+####    Amazon EC2 Horizontal Scaling Services
+- Auto-scaling Group
+    - Launch template defines the instance configuration for the group
+    - Define the minimum, maximum, and desired number of instances
+    - Performs health checks on each instance
+    - Exists within 1 or more availability zones in a single region
+    - Works with on-demand and spot instances
+- Elastic load Balancer
+
+####    AWS Secret Manager
+- Secure way to integrate credentials, API keys, tokens, and other secret content
+- Integrates natively with RDS, DocumentDB and Redshift
+- Can auto-rotate credentials with integrated services
+- Enables fine-grained access control to secrets
+
+###    Controlling Access to EC2 Instances
+
+####    Security in Amazon VPC
+- Security groups
+    - Serve as a firewall for your EC2 instances
+    - Control inbound and outbound traffic
+    - Works at the instance level
+    - EC2 instances can belong to miltiple security groups
+    - VPC's have default security groups
+    - Must be explicitly associated with and EC2 instance
+    - By default all outboud traffic is allowed
+- Network ACL's
+    - Works at the subnet level with an VPC
+    - Enables you to allow and deny traffic
+    - Each VPC has a default ACL that allows all inbound and outbound traffic
+    - Custom ACL's deny all traffic until rules are added
+- AWS VPN
+    - Createsw an encrypted tunnel into your VPC
+    - Can be used to connect your data center or even individual client machines
+    - Supported in two services:
+        - Site-to-site VPN
+        - Client VPN
+
+###    Protecting Infrastructure from Attacks
+
+####    Security Services
+- AWS Shield (anti DDoS)
+    - Provides protection against DDoS attacks for apps running on AWS
+    - Enables on-going threatt detection and mitigation
+    - Has two different service levels:
+        - Standard
+        - Advanced
+- Amazon Macie (Data protection service)
+    - Utilizes machine learning to analyze data stored in Amazon S3
+    - It can detect personal information and intellectual property in S3
+    - Provides dashboards that show how the data is being stored and accessed
+    - Enables alerts if it detects anything unusual about data access
+- Amazon Inspector (Automated security assessment service)
+    - Enables scanning of Amazon EC2 instances for security vulnerabilities
+    - Charged by instance per assesment run
+    - two types of rules packages:
+        - Network reachability assessment
+        - Host assessment
+    
+###    Deploying Pre-defined Solutions
+- AWS Service Catalog
+    - Targeted to serve as an organizational service catalog for the cloud
+    - Can include single server image to multi-tier custom applications
+    - Enables organizations to leverage services that meet compliance
+    - Supports a lifecycle for services released in the catalog
+- AWS Marketplace
+    - Curated catalog of third-party solutions for customers to run on AWS
+    - Provides AMI's, CloudFormation stacks, and SaaS based solutions
+    - Enables different pricing options to overcome licensing in the cloud
+    - Charges appear on your AWS bill
+
+###    Developer Tools
+- AWS CodeCommit (AWS github)
+    - Managed source control service
+    - Utilizes Git for repositories
+    - Control access with IAM policies
+    - Serves as an alternative to Github and BitBucket
+- AWS CodeBuild (CI)
+    - Fully managed build and continuuous integration service on AWS
+    - Don't have to worry about maintaining infrastructure
+    - Charged per minute for compute resources you utilize
+- AWS CodeDeploy
+    - Managed deployment service for deploying your custom applications
+    - Deploy to Amazon EC2, AWS Fargate, AWS Lambda, and on-premise servers
+    - Provides dashboard for deployment in the AWS Console
+- AWS CodePipeline (AWS jenkins)
+    - Fully-managed continuous delivery service on AWS
+    - Provides the capabilities to automate building, testing, and deploying
+    - Integrates with other developer tools as well as Github
+- AWS CodeStar
+    - Workflow tool that automates the use of the other developer services
+    - Creates a complete continuous delivery toolchain for a custom application
+    - Provides custom dashboards and configurations in the AWS Console
+    - You are only charged for the other services you leverage
