@@ -7,7 +7,7 @@ Main plan for my growth:
 
 ---
 
-- [ ] AWS cloud practitioner certificate
+- [X] AWS cloud practitioner certificate
 - [ ] AWS operations certificate
 - [ ] AWS developer certificate
 - [ ] AWS certified DevOps Engineer
