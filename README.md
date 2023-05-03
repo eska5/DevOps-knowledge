@@ -3,7 +3,7 @@ In this repository I will be gathering my knowledge about certain DevOps tools a
 
 Main plan for my growth:
 
-- [ ] HashiCorp Certified: Terraform Associate
+- [X] HashiCorp Certified: Terraform Associate 
 
 ---
 
